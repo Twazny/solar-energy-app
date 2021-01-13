@@ -1,0 +1,11 @@
+<div *ngIf="weather" class="temperature-card">
+    <div>
+        <span>{{weather.temp.value + "°C"}}</span>
+        <img src="assets/41191-ffeb3b.svg" alt="Sunny" style="max-width: 2rem;">
+    </div>
+    
+    <p>
+        Last update: <br>
+        {{weather.observation_time.value | date: 'medium' : undefined : 'pl-PL'}}
+    </p>
+</div>

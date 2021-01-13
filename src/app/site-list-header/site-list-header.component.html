@@ -1,0 +1,12 @@
+<div class="header-container">
+    <div>SOLARenergy</div>
+    <div>
+        <input type="text" name="" id="" placeholder="Search" spellcheck="false" (change)="onSearch($event)" [value]="filter">
+        <i
+            *ngIf="filter"
+            class="material-icons" 
+            style="position: absolute; right: 5px;" 
+            (click)="onClick()"
+        >clear</i>
+    </div>
+</div>

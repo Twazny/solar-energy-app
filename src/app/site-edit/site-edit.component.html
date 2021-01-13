@@ -1,0 +1,31 @@
+<app-site-edit-header></app-site-edit-header>
+
+<form class="form-container" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <h4>Create new site</h4>
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" id="" formControlName="name">
+        <br>
+        <label for="address">Address</label>
+        <br>
+        <input type="text" name="address" id="" formControlName="address">
+        <br>
+        <label>Coordinates</label>
+        <div class="coordinates-container" formGroupName="location">
+            <label for="latitude">N/S</label>
+            <input type="number" name="latitude" id="" formControlName="latitude">
+            <label for="longitude">W/E</label>
+            <input type="number" name="longitude" id="" formControlName="longitude">
+        </div>
+        <label for="photo">Photo</label>
+        <br>
+        <input type="file" name="photo" id="input" (change)="onFileUpload($event)">
+        <div class="thumbnail-container">
+            <img [src]="photoUrl" alt="">
+        </div>
+    </div>
+    <button type="submit" [disabled]="!form.valid">Save</button>    
+</form>
+
+

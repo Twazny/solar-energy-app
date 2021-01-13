@@ -1,0 +1,7 @@
+<app-site-list-header (onFilter)="onFilter($event)"></app-site-list-header>
+<div style="overflow: scroll; height: 95vh;">
+    <app-site-list-item [site]="site" *ngFor="let site of (sites | filterSites: filter)"></app-site-list-item>
+</div>
+<button class="add-button" (click)="onAdd()">
+    <i class="material-icons">add</i>
+</button>
