@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http'
 import { environment } from '../environments/environment.prod'
 import { BehaviorSubject, Observable, Subscription } from 'rxjs'
 import { switchMap} from 'rxjs/operators'
+import { LocationService } from './location.service'
 
 
 
@@ -28,21 +29,6 @@ interface ObservationTime {
     value: string
 }
 
-interface GeolocationCoordinates {
-    readonly accuracy: number;
-    readonly altitude: number | null;
-    readonly altitudeAccuracy: number | null;
-    readonly heading: number | null;
-    readonly latitude: number;
-    readonly longitude: number;
-    readonly speed: number | null;
-}
-
-interface GeolocationPosition {
-    readonly coords: GeolocationCoordinates;
-    readonly timestamp: number;
-}
-
 
 @Injectable({
     providedIn: 'root'
@@ -50,32 +36,15 @@ interface GeolocationPosition {
 export class WeatherService {
     private readonly url = 'https://api.climacell.co/v3/weather/realtime'
     locationSubs: Subscription
-    // location: GeolocationCoordinates
-    location
     weather = new BehaviorSubject<CurrentWeatherResponse>(null)
 
-    constructor(private http: HttpClient) {
-        // this.locationSubs = this.getCurrentLocation().subscribe((position)=> {
-        //     this.location = position.coords
-        //     // this.fetchCurrentWeather()
-        // })
-    }
-
-    private getCurrentLocation(): Observable<GeolocationPosition> {
-        return new Observable(obs => {
-            navigator.geolocation.watchPosition(
-                (position) => {
-                    obs.next(position)
-                },
-                (error) => {
-                    obs.error(error)
-                }
-            )
-        })
-    }
+    constructor(
+        private locationService: LocationService,
+        private http: HttpClient
+    ) {}
 
     fetchCurrentWeather() {
-        return this.getCurrentLocation().pipe(
+        return this.locationService.getCurrentLocation().pipe(
             switchMap(loc => {
                 console.log(loc)
                 return this.http.get<CurrentWeatherResponse>(

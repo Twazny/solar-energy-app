@@ -2,6 +2,8 @@ import { ReadVarExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+import { LocationService } from '../location.service';
 import { Site, SitesService } from '../sites.service';
 
 @Component({
@@ -22,7 +24,8 @@ export class SiteEditComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private siteService: SitesService
+    private siteService: SitesService,
+    private locationService: LocationService
   ) { }
 
   ngOnInit(): void {
@@ -44,5 +47,18 @@ export class SiteEditComponent implements OnInit {
     reader.onload = (e) => {
       this.photoUrl = e.target.result as string
     }
+  }
+
+  onUseMyLocation(): void {
+    this.locationService.getCurrentLocation()
+      .pipe(take(1)).subscribe(myLocation => {
+        console.log(myLocation)
+        this.form.patchValue({
+          location: {
+            latitude: myLocation.coords.latitude,
+            longitude: myLocation.coords.longitude
+          }
+        })
+      })
   }
 }

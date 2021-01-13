@@ -13,6 +13,7 @@ import { FilterSitesPipe } from './filter-sites.pipe';
 import { SiteEditComponent } from './site-edit/site-edit.component';
 import { SiteEditHeaderComponent } from './site-edit-header/site-edit-header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardinalDirectionsPipe } from './cardinal-directions.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SiteListHeaderComponent,
     FilterSitesPipe,
     SiteEditComponent,
-    SiteEditHeaderComponent
+    SiteEditHeaderComponent,
+    CardinalDirectionsPipe
   ],
   imports: [
     BrowserModule,

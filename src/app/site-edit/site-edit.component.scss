@@ -36,7 +36,7 @@ input {
     width: 100%;
 
     &.ng-touched.ng-invalid {
-        border: 1px inset red
+        border: 1px solid red
     }    
 }
 
@@ -54,16 +54,37 @@ input {
 }
 
 button {
+    padding: 0.5em;
+    border-radius: 0.25em;
     background-color: var(--primary-color);
     color:white;
+    border: none;
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.outline-button {
+    padding: 0.5em;
+    border-radius: 0.25em;
+    // background-color: var(--primary-color);
+    // color:white;
+    // border: none;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    outline: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button[type=submit] {
     position: fixed;
     right: 2vw;
     bottom: 2vw;
-    border: none;
+    
     width: 96vw;
     font-size: 1em;
     padding: 1em;
-    outline: none;
+    
 
     &:disabled {
         opacity: 0.5;
