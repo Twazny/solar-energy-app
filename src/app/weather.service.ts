@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { environment } from '../environments/environment.prod'
 import { BehaviorSubject, Observable, Subscription } from 'rxjs'
-import { switchMap} from 'rxjs/operators'
+import { switchMap } from 'rxjs/operators'
 import { LocationService } from './location.service'
 
 
@@ -41,26 +41,30 @@ export class WeatherService {
     constructor(
         private locationService: LocationService,
         private http: HttpClient
-    ) {}
+    ) { }
 
     fetchCurrentWeather() {
-        return this.locationService.getCurrentLocation().pipe(
-            switchMap(loc => {
-                console.log(loc)
-                return this.http.get<CurrentWeatherResponse>(
-                    this.url,
-                    {
-                        params: new HttpParams({fromObject: {
-                            apikey: environment.climacellAPIKey,
-                            lat: loc.coords.latitude.toString(),
-                            lon: loc.coords.longitude.toString(),
-                            unit_system: 'si',
-                            fields: 'temp'
-                        }})
-                    }
-                )
-            })
-        )
+        return this.locationService.getCurrentLocation().then(obs => {
+            return obs.pipe(
+                switchMap(loc => {
+                    console.log(loc)
+                    return this.http.get<CurrentWeatherResponse>(
+                        this.url,
+                        {
+                            params: new HttpParams({
+                                fromObject: {
+                                    apikey: environment.climacellAPIKey,
+                                    lat: loc.coords.latitude.toString(),
+                                    lon: loc.coords.longitude.toString(),
+                                    unit_system: 'si',
+                                    fields: 'temp'
+                                }
+                            })
+                        }
+                    )
+                })
+            )
+        })
     }
 
 }

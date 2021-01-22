@@ -21,8 +21,10 @@ export class CurrentweatherComponent implements OnInit {
     // this.weatherSubs = this.weatherService.weather.subscribe(weather => {
     //   this.wjson = JSON.stringify(weather)
     // })
-    this.weatherSubs = this.weatherService.fetchCurrentWeather().subscribe(weather => {
-      this.weather = weather
+    this.weatherService.fetchCurrentWeather().then(obs => {
+      this.weatherSubs = obs.subscribe(weather => {
+        return this.weather = weather
+      })
     })
   }
 

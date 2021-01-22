@@ -2,8 +2,9 @@ import { ReadVarExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { LocationService } from '../location.service';
+import { LocationService, GeolocationPosition } from '../location.service';
 import { Site, SitesService } from '../sites.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { Site, SitesService } from '../sites.service';
 })
 export class SiteEditComponent implements OnInit {
   photoUrl: string
+
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
@@ -29,6 +31,11 @@ export class SiteEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+  }
+
+  ngOnDestroy(): void {
+
   }
 
   onSubmit(): void {
@@ -50,9 +57,8 @@ export class SiteEditComponent implements OnInit {
   }
 
   onUseMyLocation(): void {
-    this.locationService.getCurrentLocation()
-      .pipe(take(1)).subscribe(myLocation => {
-        console.log(myLocation)
+    this.locationService.getCurrentLocation().then(obs => {
+      obs.pipe(take(1)).subscribe(myLocation => {
         this.form.patchValue({
           location: {
             latitude: myLocation.coords.latitude,
@@ -60,5 +66,8 @@ export class SiteEditComponent implements OnInit {
           }
         })
       })
+    }).catch(error => {
+      console.log('componentError', error)
+    })
   }
 }

@@ -1,9 +1,10 @@
 .header-container {
-    display: flex; 
-    justify-content: space-between; 
-    align-items:  center;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.5em;
-    height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5em;
+  height: 5vh;
+  box-sizing: border-box;
 }

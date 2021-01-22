@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 
 
 export interface GeolocationCoordinates {
@@ -22,14 +22,29 @@ export interface GeolocationPosition {
     providedIn: 'root'
 })
 export class LocationService {
-    getCurrentLocation(): Observable<GeolocationPosition> {
-        return new Observable(obs => {
+    private locationSubject: BehaviorSubject<GeolocationPosition>
+
+    getCurrentLocation(): Promise<BehaviorSubject<GeolocationPosition>> {
+        return new Promise((resolve, reject) => {
+            if (this.locationSubject) {
+                resolve(this.locationSubject)
+                return
+            }
             navigator.geolocation.watchPosition(
                 (position) => {
-                    obs.next(position)
+                    if (this.locationSubject) {
+                        this.locationSubject.next(position)
+                    } else {
+                        this.locationSubject = new BehaviorSubject(position)
+                        resolve(this.locationSubject)
+                    }
                 },
                 (error) => {
-                    obs.error(error)
+                    if (this.locationSubject) {
+                        this.locationSubject.error(error)
+                    } else {
+                        reject(error)
+                    }
                 }
             )
         })
