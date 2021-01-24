@@ -1,18 +1,17 @@
 // @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Space+Mono&family=Work+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 :root {
-    --primary-color: rgb(58, 114, 226);
-    --border-color: #c2c2c2;
-    
+  --primary-color: rgb(58, 114, 226);
+  --border-color: #c2c2c2;
 }
 
 body {
-    box-sizing: border-box;
-    // background-color: rgb(233, 233, 233);
-    background: white;
-    margin: 0;
-    // font-family: 'Space Mono', monospace;
-    font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  // background-color: rgb(233, 233, 233);
+  background: white;
+  margin: 0;
+  // font-family: 'Space Mono', monospace;
+  font-family: "Open Sans", sans-serif;
+  overflow: hidden;
 }
-
