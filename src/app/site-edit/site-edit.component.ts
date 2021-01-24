@@ -18,9 +18,10 @@ export class SiteEditComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
+    photo: new FormControl(''),
     location: new FormGroup({
-      latitude: new FormControl(0, [Validators.required, Validators.max(90), Validators.min(-90)]),
-      longitude: new FormControl(0, [Validators.required, Validators.max(180), Validators.min(-180)])
+      latitude: new FormControl(null, [Validators.required, Validators.max(90), Validators.min(-90)]),
+      longitude: new FormControl(null, [Validators.required, Validators.max(180), Validators.min(-180)])
     })
   })
 
@@ -52,7 +53,11 @@ export class SiteEditComponent implements OnInit {
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onload = (e) => {
+      console.log(e.target.result)
       this.photoUrl = e.target.result as string
+      this.form.patchValue({
+        photo: this.photoUrl
+      })
     }
   }
 

@@ -9,6 +9,7 @@ export interface Site {
     latitude: number;
     longitude: number;
   }
+  photo?: string;
 }
 
 @Injectable({
@@ -42,86 +43,6 @@ const initSites: Site[] = [
       latitude: 50.40,
       longitude: 20.35
     }
-  },
-  {
-    id: 'fsdgdsg',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
-    location: {
-      latitude: 50.40,
-      longitude: 20.35
-    }
-  },
-  {
-    id: 'fsdgdsg',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
-    location: {
-      latitude: 50.40,
-      longitude: 20.35
-    }
-  },
-  {
-    id: 'fsdgdsg',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
-    location: {
-      latitude: 50.40,
-      longitude: 20.35
-    }
-  },
-  {
-    id: 'fsdgdsg',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
-    location: {
-      latitude: 50.40,
-      longitude: 20.35
-    }
-  },
-  {
-    id: 'fsdgdsg',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
-    location: {
-      latitude: 50.40,
-      longitude: 20.35
-    }
-  },
-  {
-    id: 'fsdgdsg',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
-    location: {
-      latitude: 50.40,
-      longitude: 20.35
-    }
-  },
-  {
-    id: 'fsdgdsg',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
-    location: {
-      latitude: 50.40,
-      longitude: 20.35
-    }
-  },
-  {
-    id: 'fsdgdsg',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
-    location: {
-      latitude: 50.40,
-      longitude: 20.35
-    }
-  },
-  {
-    id: 'fsdgdsg',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
-    location: {
-      latitude: 50.40,
-      longitude: 20.35
-    }
   }
+
 ]
