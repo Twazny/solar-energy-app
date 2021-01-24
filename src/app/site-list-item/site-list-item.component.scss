@@ -14,9 +14,10 @@
 }
 
 .img-container {
+    position: relative;
     box-sizing: border-box;
     height: 100%; 
-    width:30%; 
+    width: 30%; 
     overflow: hidden; 
     border-radius: 1em;
     max-width: 150px;
@@ -24,6 +25,10 @@
     & img {
         width: 100%;
         height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
     }
 }
 
