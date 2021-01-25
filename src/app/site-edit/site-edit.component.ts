@@ -14,16 +14,8 @@ import { Site, SitesService } from '../sites.service';
 })
 export class SiteEditComponent implements OnInit {
   photoUrl: string
+  form: FormGroup
 
-  form = new FormGroup({
-    name: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    photo: new FormControl(''),
-    location: new FormGroup({
-      latitude: new FormControl(null, [Validators.required, Validators.max(90), Validators.min(-90)]),
-      longitude: new FormControl(null, [Validators.required, Validators.max(180), Validators.min(-180)])
-    })
-  })
 
   constructor(
     private router: Router,
@@ -32,7 +24,15 @@ export class SiteEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.form = new FormGroup({
+      name: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      photo: new FormControl(''),
+      location: new FormGroup({
+        latitude: new FormControl(null, [Validators.required, Validators.max(90), Validators.min(-90)]),
+        longitude: new FormControl(null, [Validators.required, Validators.max(180), Validators.min(-180)])
+      })
+    })
   }
 
   ngOnDestroy(): void {
@@ -43,7 +43,9 @@ export class SiteEditComponent implements OnInit {
     if (!this.form.valid) {
       return
     }
-    console.log(this.form.value)
+    if (!this.form.value.photo) {
+      this.form.value.photo = 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'
+    }
     this.siteService.addSite((this.form.value as Site))
     this.router.navigate(['sites'])
   }
@@ -53,7 +55,6 @@ export class SiteEditComponent implements OnInit {
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onload = (e) => {
-      console.log(e.target.result)
       this.photoUrl = e.target.result as string
       this.form.patchValue({
         photo: this.photoUrl
@@ -66,8 +67,8 @@ export class SiteEditComponent implements OnInit {
       obs.pipe(take(1)).subscribe(myLocation => {
         this.form.patchValue({
           location: {
-            latitude: myLocation.coords.latitude,
-            longitude: myLocation.coords.longitude
+            latitude: myLocation.coords.latitude.toFixed(6),
+            longitude: myLocation.coords.longitude.toFixed(6)
           }
         })
       })

@@ -1,37 +1,37 @@
 :host {
-    display: inline-block;
-    width: 100%;
-    height: 100px;
-    box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
 }
 
 .container {
-    height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    padding: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .img-container {
-    position: relative;
-    box-sizing: border-box;
-    height: 100%; 
-    width: 30%; 
-    overflow: hidden; 
-    border-radius: 1em;
-    max-width: 150px;
-    margin-right: 0.5rem;
-    & img {
-        width: 100%;
-        height: auto;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-    }
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  width: 30%;
+  overflow: hidden;
+  border-radius: 1em;
+  max-width: 150px;
+  margin-right: 0.5rem;
+  & img {
+    width: 120%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 h3 {
-    margin: 0;
+  margin: 0;
 }

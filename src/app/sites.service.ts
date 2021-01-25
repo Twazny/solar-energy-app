@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
+import { v4 as uuidv4 } from 'uuid'
 
 export interface Site {
   id: string;
@@ -24,6 +25,7 @@ export class SitesService {
   }
 
   addSite(site: Site): void {
+    site.id = uuidv4()
     this.sites.push(site)
     this.notify()
   }
@@ -36,13 +38,14 @@ export class SitesService {
 
 const initSites: Site[] = [
   {
-    id: 'fsdgdsg',
+    id: '1',
     name: 'Production C',
     address: 'Baker str 1/34 London',
     location: {
       latitude: 50.40,
       longitude: 20.35
-    }
+    },
+    photo: 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'
   }
 
 ]

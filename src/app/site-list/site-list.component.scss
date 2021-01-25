@@ -1,15 +1,16 @@
 .add-button {
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 1.5em;
-    // padding: 0.5em;
-    line-height: 1em;
-    width: 3em;
-    height: 3em;
-    border: none;
-    position: fixed;
-    right: 5vw;
-    bottom: 5vw;
-    font-size: 1em;
-    box-shadow: 3px 3px 5px gray;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 1.5em;
+  // padding: 0.5em;
+  line-height: 1em;
+  width: 3em;
+  height: 3em;
+  border: none;
+  position: fixed;
+  right: 5vw;
+  bottom: 5vw;
+  font-size: 1em;
+  box-shadow: 3px 3px 5px gray;
+  cursor: pointer;
 }

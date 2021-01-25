@@ -1,6 +1,6 @@
-import { secrets } from '../../secrets'
+// import { secrets } from '../../secrets'
 
 export const environment = {
   production: true,
-  climacellAPIKey: secrets.climacellAPIKey
+  climacellAPIKey: ''
 };

@@ -1,14 +1,16 @@
-<div class="container" (click)="onClick()">
+<app-site-edit-header></app-site-edit-header>
+<div style="width: 100%;">
     <div class="img-container">
-        <img  [src]="site.photo" alt="">
+        <img [src]="site.photo" alt="">
+        <span>{{site.name}}</span>
     </div>
-    <div>
-        <h3>{{site.name}}</h3>
+    <div style="padding: 1em;">
         <span>{{site.address}}</span>
         <br>
         <span style="color:gray; font-size: 0.9em;">
             {{site.location.latitude | cardinalDir: 'lat'}} 
             {{site.location.longitude | cardinalDir: 'lng'}}
-        </span>    
+        </span>   
     </div>
+
 </div>

@@ -8,7 +8,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routeAnimations', [
-      transition('sitesView => newSiteView', [
+      transition('sitesView => *', [
         style({ position: 'relative' }),
         query(':enter, :leave', [
           style({
@@ -32,7 +32,7 @@ import { RouterOutlet } from '@angular/router';
         ]),
         query(':enter', animateChild()),
       ]),
-      transition('newSiteView => sitesView', [
+      transition('newSiteView => sitesView, siteDetailsView => sitesView', [
         style({ position: 'relative' }),
         query(':enter, :leave', [
           style({
