@@ -4,18 +4,18 @@
         <h4>Create new site</h4>
         <label for="name">Name</label>
         <br>
-        <input type="text" name="name" id="" formControlName="name">
+        <input type="text" name="name" id="name" formControlName="name">
         <br>
         <label for="address">Address</label>
         <br>
-        <input type="text" name="address" id="" formControlName="address">
+        <input type="text" name="address" id="address" formControlName="address">
         <br>
         <label>Coordinates</label>
         <div class="coordinates-container" formGroupName="location">
             <label for="latitude">N/S</label>
-            <input type="number" name="latitude" id="" formControlName="latitude">
+            <input type="number" name="latitude" id="latitude" formControlName="latitude">
             <label for="longitude">W/E</label>
-            <input type="number" name="longitude" id="" formControlName="longitude">
+            <input type="number" name="longitude" id="longitude" formControlName="longitude">
         </div>
         <button type="button" (click)="onUseMyLocation()" style="display: flex; align-items: center;justify-content: space-evenly;" class="outline-button">
             <span class="material-icons" style="margin-right: 0.3em;">my_location</span>Use my current location
