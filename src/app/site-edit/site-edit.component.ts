@@ -62,6 +62,15 @@ export class SiteEditComponent implements OnInit {
     }
   }
 
+  onPhotoRemove(event: MouseEvent): void {
+    event.stopPropagation()
+    this.photoUrl = null
+    this.form.patchValue({
+      photo: null
+    })
+
+  }
+
   onUseMyLocation(): void {
     this.locationService.getCurrentLocation().then(obs => {
       obs.pipe(take(1)).subscribe(myLocation => {
