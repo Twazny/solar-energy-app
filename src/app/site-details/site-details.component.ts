@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { map, switchMap, take, tap } from 'rxjs/operators';
@@ -6,11 +7,25 @@ import { Site, SitesService } from '../sites.service';
 @Component({
   selector: 'app-site-details',
   templateUrl: './site-details.component.html',
-  styleUrls: ['./site-details.component.scss']
+  styleUrls: ['./site-details.component.scss'],
+  animations: [
+    trigger('settigs', [
+      state('in', style({ height: '300px', opacity: 1 })),
+      transition('void => *', [style(
+        { height: '0px', opacity: 0 }),
+      animate('100ms ease-out')
+      ]),
+      transition('* => void', [
+        animate(100, style({ height: '0px', opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class SiteDetailsComponent implements OnInit {
   site: Site
   id: string
+
+  opened = false
 
   constructor(
     private activatedRoute: ActivatedRoute,
