@@ -9,7 +9,7 @@
             <span class="material-icons option-button-icon">settings</span>
         </div>
         <div [@settigs] *ngIf="opened" class="options">
-            <div style="top: 20%;" class="option-button">
+            <div style="top: 20%;" class="option-button" (click)="onEdit()">
                 <span class="material-icons option-button-icon">edit</span>
                 <span class="option-button-title">Edit</span>
             </div>

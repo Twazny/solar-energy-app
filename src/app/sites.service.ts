@@ -30,6 +30,12 @@ export class SitesService {
     this.notify()
   }
 
+  updateSite(id: string, updatedSite: Site): void {
+    let idx = this.sites.findIndex(site => site.id === id)
+    this.sites[idx] = { ...this.sites[idx], ...updatedSite }
+    this.notify()
+  }
+
   private notify(): void {
     this.sitesSubject.next(this.sites)
   }

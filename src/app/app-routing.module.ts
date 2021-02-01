@@ -11,6 +11,7 @@ const routes: Routes = [
       { path: '', component: SiteListComponent, data: { animation: 'sitesView' }, pathMatch: 'full' },
       { path: 'new', component: SiteEditComponent, data: { animation: 'newSiteView' } },
       { path: ':id', component: SiteDetailsComponent, data: { animation: 'siteDetailsView' } },
+      { path: ':id/edit', component: SiteEditComponent, data: { animation: 'siteDetailsView' } }
     ]
   },
 ];
