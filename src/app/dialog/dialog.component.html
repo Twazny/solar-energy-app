@@ -1,5 +1,5 @@
 <div class="overlay" (click)="onOverlayClick()">
-    <div class="dialog" (click)="onDialogClick($event)">
+    <div [@slideIn]="'in'" class="dialog" (click)="onDialogClick($event)">
         <ng-template appInsertion></ng-template>
     </div>
 </div>
