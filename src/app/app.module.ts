@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CardinalDirectionsPipe } from './cardinal-directions.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SiteDetailsComponent } from './site-details/site-details.component';
+import { DialogModule } from './dialog/dialog.module'
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SiteDetailsComponent } from './site-details/site-details.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
