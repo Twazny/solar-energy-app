@@ -1,0 +1,22 @@
+h4 {
+  margin: 0;
+}
+p {
+  margin-bottom: 2rem;
+}
+
+.dialog-buttons-group {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  & app-button {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+
+    &:not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+}

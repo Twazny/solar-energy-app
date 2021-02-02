@@ -1,4 +1,6 @@
 <h4>Confirmation</h4>
 <p>{{question}}</p>
-<button (click)="onClose(true)">{{yesLabel}}</button>
-<button (click)="onClose(false)">{{noLabel}}</button>
+<div class="dialog-buttons-group">
+    <app-button [light]="true" [text]="yesLabel" (click)="onClose(true)"></app-button>
+    <app-button [text]="noLabel" (click)="onClose(false)"></app-button>
+</div>

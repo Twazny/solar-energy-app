@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardinalDirectionsPipe } from './cardinal-directions.pipe';
+import { ButtonComponent } from './button/button.component';
 
 
 @NgModule({
   declarations: [
-    CardinalDirectionsPipe
+    CardinalDirectionsPipe,
+    ButtonComponent,
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    CardinalDirectionsPipe
+    CardinalDirectionsPipe,
+    ButtonComponent
   ]
 })
 export class SharedModule { }
