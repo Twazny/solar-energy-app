@@ -33,13 +33,13 @@ export class SiteDetailsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private sitesService: SitesService,
     private dialogService: DialogService
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.pipe(
+    this.route.params.pipe(
       tap((data: Params) => this.id = data['id']),
       switchMap((data: Params) => this.sitesService.getSites()),
       map(sites => {
@@ -49,7 +49,7 @@ export class SiteDetailsComponent implements OnInit {
   }
 
   onEdit(): void {
-    this.router.navigate(['edit'], { relativeTo: this.activatedRoute })
+    this.router.navigate(['edit'], { relativeTo: this.route })
   }
   onRemove(): void {
     this.dialogReference = this.dialogService.open(ConfirmationDialogComponent, {
@@ -58,6 +58,11 @@ export class SiteDetailsComponent implements OnInit {
       }
     })
 
-    this.dialogReference.afterClosed.subscribe((answer) => console.log(answer))
+    this.dialogReference.afterClosed.pipe(take(1)).subscribe((answer) => {
+      if (answer) {
+        this.sitesService.removeSite(this.id)
+        this.router.navigate(['..'], { relativeTo: this.route })
+      }
+    })
   }
 }

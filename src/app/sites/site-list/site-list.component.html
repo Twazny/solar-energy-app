@@ -2,6 +2,5 @@
 <div style="overflow-y: scroll; height: 92vh; display: flex; flex-direction: column;">
     <app-site-list-item [site]="site" *ngFor="let site of (sites | filterSites: filter)"></app-site-list-item>
 </div>
-<button class="add-button" (click)="onAdd()">
-    <i class="material-icons">add</i>
-</button>
+<app-icon-button [icon]="'map'" style="position: absolute; left: 1rem; bottom: 1rem;"></app-icon-button>
+<app-icon-button (click)="onAdd()" [icon]="'add'" style="position: absolute; right: 1rem; bottom: 1rem;"></app-icon-button>

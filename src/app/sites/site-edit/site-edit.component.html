@@ -24,10 +24,26 @@
         <label for="photo">Photo</label>
         <br>
         <input #fileInput type="file" name="photo" id="input" (change)="onFileUpload($event)">
-        <div (click)="fileInput.click()" class="thumbnail-container">
+        <div (click)="onUploadClick()" class="thumbnail-container">
             <img [src]="photoUrl" alt="">
             <span *ngIf="!photoUrl" class="material-icons">add_a_photo</span>
-            <button (click)="onPhotoRemove($event)" *ngIf="photoUrl"><span class="material-icons">delete_outline</span></button>
+            <app-icon-button
+                *ngIf="photoUrl"
+                (click)="onPhotoRemove($event)"
+                [colorScheme]="'white'"
+                [icon]="'delete_outline'"
+                [size]="'2.5rem'"
+                style="position: absolute; top: 0.5rem; right: 0.5rem;"
+            ></app-icon-button>
+            <app-icon-button
+                *ngIf="photoUrl"
+                (click)="fileInput.click()"
+                [colorScheme]="'white'"
+                [icon]="'sync'"
+                [size]="'2.5rem'"
+                style="position: absolute; top: 3.5rem; right: 0.5rem;"
+            ></app-icon-button>
+            <!-- <button (click)="onPhotoRemove($event)" *ngIf="photoUrl"><span class="material-icons">delete_outline</span></button> -->
         </div>
     </div>
     <button type="submit" [disabled]="!form.valid">Save</button>    

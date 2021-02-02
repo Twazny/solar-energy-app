@@ -1,6 +1,6 @@
 <div class="container" (click)="onClick()">
     <div class="img-container">
-        <img  [src]="site.photo" alt="">
+        <img  [src]="site.photo || 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'" alt="">
     </div>
     <div>
         <h3>{{site.name}}</h3>

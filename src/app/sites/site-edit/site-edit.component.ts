@@ -1,5 +1,5 @@
 import { ReadVarExpr } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { of, Subscription, throwError } from 'rxjs';
@@ -13,6 +13,8 @@ import { Site, SitesService } from '../sites.service';
   styleUrls: ['./site-edit.component.scss']
 })
 export class SiteEditComponent implements OnInit {
+  @ViewChild('fileInput') fileInput: ElementRef
+
   photoUrl: string
   form: FormGroup
   id: string
@@ -73,14 +75,17 @@ export class SiteEditComponent implements OnInit {
     })
   }
 
+  onUploadClick(): void {
+    if (!this.photoUrl) {
+      this.fileInput.nativeElement.click()
+    }
+  }
+
   onSubmit(): void {
     if (!this.form.valid) {
       return
     }
-    // if (!this.form.value.photo) {
-    //   this.form.value.photo = 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'
-    // }
-    console.log(this.id)
+
     if (this.id) {
       this.siteService.updateSite(this.id, (this.form.value as Site))
     } else {

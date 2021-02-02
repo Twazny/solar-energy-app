@@ -36,6 +36,11 @@ export class SitesService {
     this.notify()
   }
 
+  removeSite(id: string): void {
+    let idx = this.sites.findIndex(site => site.id === id)
+    this.sites.splice(idx, 1)
+  }
+
   private notify(): void {
     this.sitesSubject.next(this.sites)
   }
@@ -51,7 +56,7 @@ const initSites: Site[] = [
       latitude: 50.40,
       longitude: 20.35
     },
-    photo: 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'
+    photo: null
   }
 
 ]

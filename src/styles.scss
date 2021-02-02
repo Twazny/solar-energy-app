@@ -3,7 +3,10 @@
 
 :root {
   --primary-color: rgb(204, 79, 106);
+  --secondary-color: orangered;
   --border-color: #dadada;
+  --text-dark-color: rgb(59, 59, 59);
+  --button-shadow: 0 4px 2px -2px lightgray;
 }
 
 body {
@@ -13,7 +16,7 @@ body {
   margin: 0;
   // font-family: 'Space Mono', monospace;
   font-family: "Open Sans", sans-serif;
-  color: rgb(59, 59, 59);
+  color: var(--text-dark-color);
   overflow: hidden;
 }
 

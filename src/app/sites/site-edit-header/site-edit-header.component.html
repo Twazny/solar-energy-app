@@ -1,8 +1,10 @@
 <div class="header-container">
     <div style="display: flex; align-items: center;">
-        <button class="back-button" (click)="onBack()">
-            <span class="material-icons">arrow_back</span>
-        </button>
+        <app-icon-button 
+            (click)="onBack()" 
+            [colorScheme]="'transparent'" 
+            [icon]="'arrow_back'">
+        </app-icon-button>
         Site list
     </div>
 </div>

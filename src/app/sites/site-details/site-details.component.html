@@ -1,7 +1,7 @@
 <app-site-edit-header></app-site-edit-header>
 <div style="width: 100%;">
     <div class="img-container">
-        <img [src]="site.photo" alt="">
+        <img [src]="site.photo || 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'" alt="">
         <span class="site-name">{{site.name}}</span>
     </div>
     <div style="padding: 1em; position: relative;">
@@ -9,18 +9,26 @@
             <span class="material-icons option-button-icon">settings</span>
         </div>
         <div [@settigs] *ngIf="opened" class="options">
-            <div style="top: 20%;" class="option-button" (click)="onEdit()">
-                <span class="material-icons option-button-icon">edit</span>
-                <span class="option-button-title">Edit</span>
-            </div>
-            <div style="top: 50%;" class="option-button" (click)="onRemove()">
-                <span class="material-icons option-button-icon">delete</span>
-                <span class="option-button-title">Remove</span>
-            </div>
-            <div  style="top: 80%;" class="option-button">
-                <span class="material-icons option-button-icon">share</span>
-                <span class="option-button-title">Share</span>
-            </div>
+            <app-icon-button 
+                (click)="onEdit()"
+                style="position: absolute; top: 20%; transform: translateY(-50%);"
+                [colorScheme]="'secondary'"
+                [title]="'Edit'"
+                [icon]="'edit'">
+            </app-icon-button>
+            <app-icon-button 
+                (click)="onRemove()"
+                style="position: absolute; top: 50%; transform: translateY(-50%);"
+                [colorScheme]="'secondary'"
+                [title]="'Remove'" 
+                [icon]="'delete'">
+            </app-icon-button>
+            <app-icon-button 
+                style="position: absolute; top: 80%; transform: translateY(-50%);"
+                [colorScheme]="'secondary'"
+                [title]="'Share'" 
+                [icon]="'share'">
+            </app-icon-button>
         </div>
 
         <span>{{site.address}}</span>

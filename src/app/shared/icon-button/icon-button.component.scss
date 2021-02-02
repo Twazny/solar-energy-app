@@ -1,0 +1,85 @@
+:host {
+  --size: 3rem;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: white;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  height: var(--size);
+  width: var(--size);
+  border-radius: calc(0.5 * var(--size));
+  box-shadow: var(--button-shadow);
+  position: relative;
+
+  & .icon-span {
+    color: var(--text-dark-color);
+    font-size: calc(var(--size) * 0.7);
+    line-height: var(--size);
+    width: 100%;
+    text-align: center;
+  }
+
+  &.button-primary {
+    background-color: var(--primary-color);
+    & .icon-span {
+      color: white;
+    }
+  }
+
+  &.button-secondary {
+    background-color: var(--secondary-color);
+    & .icon-span {
+      color: white;
+    }
+  }
+
+  &.button-transparent {
+    background-color: transparent;
+    box-shadow: none;
+    & .icon-span {
+      color: white;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    transform-style: flat;
+    transform: translate3d(-50%, -50%, 0);
+    background: rgba(white, 0.2);
+    border-radius: 100%;
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+  &:active {
+    &::after {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  & .title-span {
+    padding: 0.375rem 0.7rem;
+    line-height: 1;
+    height: auto;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    width: auto;
+    display: inline-block;
+    background-color: rgb(255, 240, 213);
+    border: 1px solid lightgray;
+    position: absolute;
+    top: 50%;
+    left: -0.5rem;
+    color: rgb(53, 53, 53);
+    transform: translate(-100%, -50%);
+  }
+}
