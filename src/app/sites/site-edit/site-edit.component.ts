@@ -4,7 +4,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { of, Subscription, throwError } from 'rxjs';
 import { catchError, map, switchMap, take, tap } from 'rxjs/operators';
-import { LocationService, GeolocationPosition } from '../location.service';
+import { LocationService, GeolocationPosition } from '../../location.service';
 import { Site, SitesService } from '../sites.service';
 
 @Component({

@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Site, SitesService } from '../sites.service';
-import { DialogService } from '../dialog/dialog.service'
-import { ConfirmationDialogComponent } from '../dialog/confirmation-dialog/confirmation-dialog.component';
-import { DialogRef } from '../dialog/dialog-ref';
+import { DialogService } from '../../dialog/dialog.service'
+import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
+import { DialogRef } from '../../dialog/dialog-ref';
 
 @Component({
   selector: 'app-site-details',

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SiteDetailsComponent } from './site-details/site-details.component';
-import { SiteEditComponent } from './site-edit/site-edit.component';
-import { SiteListComponent } from './site-list/site-list.component';
+import { SiteDetailsComponent } from './sites/site-details/site-details.component';
+import { SiteEditComponent } from './sites/site-edit/site-edit.component';
+import { SiteListComponent } from './sites/site-list/site-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sites', pathMatch: 'full' },
