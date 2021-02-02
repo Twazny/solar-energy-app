@@ -9,22 +9,13 @@ import { Site, SitesService } from '../sites.service'
   selector: 'app-site-list',
   templateUrl: './site-list.component.html',
   styleUrls: ['./site-list.component.scss'],
-  // animations: [
-  //   trigger('slideIn', [
-  //     state('in', style({
-  //       'transform': 'translateX(0)'
-  //     }))
-  //   ]),
-  //   transition('void <=> *', [style({ 'transform': 'translateX(-50vw)' }), animate(500)])
-  // ]
 })
 export class SiteListComponent implements OnInit {
-
-  // @HostBinding('@slideIn') get state(): string { return 'in' }
-
+  mapMode = false
   filter = ''
   sitesSubs: Subscription
   sites: Site[] = []
+
 
   constructor(
     private sitesService: SitesService,
@@ -45,6 +36,9 @@ export class SiteListComponent implements OnInit {
     this.router.navigate(['sites/new'])
   }
 
+  onModeToggle(): void {
+    this.mapMode = !this.mapMode
+  }
 }
 
 
