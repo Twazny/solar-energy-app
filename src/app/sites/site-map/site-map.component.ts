@@ -51,10 +51,20 @@ export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
     const markers = []
     for (const site of sites) {
       const { latitude, longitude } = site.location
-      markers.push(L.marker([latitude, longitude], this.getMarkerOptions()));
+      markers.push(L.marker([latitude, longitude], {
+        id: site.id,
+        ...this.getMarkerOptions()
+      } as L.MarkerOptions));
     }
-    const group = L.featureGroup(markers).addTo(this.map);
+    const group = L.featureGroup(markers)
+      .on('click', this.onMarkerClick)
+      .addTo(this.map)
     this.map.fitBounds(group.getBounds())
+  }
+
+  onMarkerClick = (event: L.LeafletMouseEvent): void => {
+    const targetMarker = event.sourceTarget as L.Marker
+    // console.log(targetMarker.options['id'])
   }
 
   private getMarkerOptions(): L.MarkerOptions {
