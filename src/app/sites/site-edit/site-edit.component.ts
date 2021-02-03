@@ -85,11 +85,15 @@ export class SiteEditComponent implements OnInit {
     if (!this.form.valid) {
       return
     }
+    const formValue = this.form.value as Site
+
+    formValue.location.longitude = +formValue.location.longitude;
+    formValue.location.latitude = +formValue.location.latitude;
 
     if (this.id) {
-      this.siteService.updateSite(this.id, (this.form.value as Site))
+      this.siteService.updateSite(this.id, formValue)
     } else {
-      this.siteService.addSite((this.form.value as Site))
+      this.siteService.addSite(formValue)
     }
     this.router.navigate(['sites'])
   }

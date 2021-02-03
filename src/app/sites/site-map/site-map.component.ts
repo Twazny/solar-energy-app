@@ -1,39 +1,70 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import * as L from 'leaflet'
 import "leaflet/dist/images/marker-icon-2x.png";
+import { Subscription } from 'rxjs';
+import { Site, SitesService } from '../sites.service';
 
 @Component({
   selector: 'app-site-map',
   templateUrl: './site-map.component.html',
   styleUrls: ['./site-map.component.scss']
 })
-export class SiteMapComponent implements OnInit {
-  private map;
+export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
+  private readonly opsmURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  private readonly attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  
+  private siteSubs: Subscription
+  private map: L.Map
 
-  constructor() { }
+  constructor(
+    private siteService: SitesService
+  ) { }
 
   ngOnInit(): void {
-    this.initMap()
+
   }
 
-  private initMap(): void {
+  ngAfterViewInit(): void {
+    this.siteSubs = this.siteService.getSites().subscribe(sites => {
+      this.initMap(sites)
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.siteSubs.unsubscribe()
+  }
+
+  private initMap(sites: Site[]): void {
     this.map = L.map('map', {
-      center: [49.83, 19.60],
+      center: [0, 0],
       zoom: 12
     });
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const tiles = L.tileLayer(this.opsmURL, {
       maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      attribution: this.attribution
     });
     tiles.addTo(this.map);
-    const marker = L.marker([49.83, 19.61], {
+    
+    if (sites.length === 0) {
+      return
+    }
+    const markers = []
+    for (const site of sites) {
+      const { latitude, longitude } = site.location
+      markers.push(L.marker([latitude, longitude], this.getMarkerOptions()));
+    }
+    const group = L.featureGroup(markers).addTo(this.map);
+    this.map.fitBounds(group.getBounds())
+  }
+
+  private getMarkerOptions(): L.MarkerOptions {
+    return {
       icon: L.icon({
         iconSize: [25, 41],
         iconAnchor: [13, 41],
         iconUrl: 'assets/marker-icon.png',
         shadowUrl: 'assets/marker-shadow.png'
       })
-    }).addTo(this.map);
+    }
   }
-
 }
