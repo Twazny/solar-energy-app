@@ -2,12 +2,14 @@
     <div class="img-container">
         <img  [src]="site.photo || 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'" alt="">
     </div>
-    <div>
-        <h3>{{site.name}}</h3>
+    <div class="data-container">
+        <span>{{site.name}}</span>
+        <br>
         <span>{{site.address}}</span>
         <br>
         <span style="color:gray; font-size: 0.9em;">
-            {{site.location.latitude | cardinalDir: 'lat'}} 
+            {{site.location.latitude | cardinalDir: 'lat'}}
+            <br>
             {{site.location.longitude | cardinalDir: 'lng'}}
         </span>    
     </div>

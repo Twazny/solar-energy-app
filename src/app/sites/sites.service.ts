@@ -50,13 +50,12 @@ export class SitesService {
 const initSites: Site[] = [
   {
     id: '1',
-    name: 'Production C',
-    address: 'Baker str 1/34 London',
+    name: 'Farma fotowoltaiczna w Cieszanowie',
+    address: '37-611 Cieszanów',
     location: {
-      latitude: 50.40,
-      longitude: 20.35
+      latitude: 50.24019272401028,
+      longitude: 23.126714134486967
     },
-    photo: null
+    photo: 'https://elubaczow.com/wp-content/uploads/2014/10/DSC_9285.jpg'
   }
-
 ]

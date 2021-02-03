@@ -32,6 +32,13 @@
   }
 }
 
-h3 {
-  margin: 0;
+.data-container {
+  width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  & span:first-child {
+    font-weight: bold;
+  }
 }

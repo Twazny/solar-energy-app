@@ -54,7 +54,8 @@ export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
       markers.push(L.marker([latitude, longitude], {
         id: site.id,
         ...this.getMarkerOptions()
-      } as L.MarkerOptions));
+      } as L.MarkerOptions).bindTooltip(site.name,{permanent: true})
+      );
     }
     const group = L.featureGroup(markers)
       .on('click', this.onMarkerClick)
