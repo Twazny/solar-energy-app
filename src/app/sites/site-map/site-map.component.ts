@@ -26,7 +26,14 @@ export class SiteMapComponent implements OnInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
     tiles.addTo(this.map);
-    const marker = L.marker([49.83, 19.60]).addTo(this.map);
+    const marker = L.marker([49.83, 19.60], {
+      icon: L.icon({
+        iconSize: [25, 41],
+        iconAnchor: [13, 41],
+        iconUrl: 'assets/marker-icon.png',
+        shadowUrl: 'assets/marker-shadow.png'
+      })
+    }).addTo(this.map);
   }
 
 }
