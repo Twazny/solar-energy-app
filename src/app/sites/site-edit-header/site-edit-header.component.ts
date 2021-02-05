@@ -17,7 +17,7 @@ export class SiteEditHeaderComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['..'], { relativeTo: this.route })
+    this.router.navigate(['..'], { relativeTo: this.route, queryParamsHandling: 'preserve' })
   }
 
 }

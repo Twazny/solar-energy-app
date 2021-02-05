@@ -57,5 +57,16 @@ const initSites: Site[] = [
       longitude: 23.126714134486967
     },
     photo: 'https://elubaczow.com/wp-content/uploads/2014/10/DSC_9285.jpg'
-  }
+  },
+  {
+    id: '2',
+    name: 'Dom Nowaków (ref: 1123456)',
+    address: 'ul. Zbożowa 123 37-611 Cieszanów',
+    location: {
+      latitude: 50.247095,
+      longitude: 23.135425
+    },
+    photo: 'https://newscenter.lbl.gov/wp-content/uploads/sites/2/2011/09/solar-panels.jpg'
+  },
+
 ]

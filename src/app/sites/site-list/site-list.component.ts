@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Site, SitesService } from '../sites.service'
 
@@ -19,10 +19,15 @@ export class SiteListComponent implements OnInit {
 
   constructor(
     private sitesService: SitesService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      this.mapMode = params['map'] ? (params['map'] === 'true') : false
+    })
+
     this.sitesSubs = this.sitesService.getSites().subscribe(sites => {
       this.sites = sites
     })
@@ -33,11 +38,16 @@ export class SiteListComponent implements OnInit {
   }
 
   onAdd(): void {
-    this.router.navigate(['sites/new'])
+    this.router.navigate(['sites/new'], { queryParamsHandling: 'preserve' })
   }
 
   onModeToggle(): void {
     this.mapMode = !this.mapMode
+    const params = {
+      map: this.mapMode
+    }
+
+    this.router.navigate([], { relativeTo: this.route, queryParams: params })
   }
 }
 

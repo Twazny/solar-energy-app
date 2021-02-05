@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import * as L from 'leaflet'
 import "leaflet/dist/images/marker-icon-2x.png";
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { Site, SitesService } from '../sites.service';
 
 @Component({
@@ -12,9 +13,12 @@ import { Site, SitesService } from '../sites.service';
 export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly opsmURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   private readonly attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  
+
   private siteSubs: Subscription
   private map: L.Map
+
+  selectedId: string
+  selectedSite: Site
 
   constructor(
     private siteService: SitesService
@@ -38,13 +42,13 @@ export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.map = L.map('map', {
       center: [0, 0],
       zoom: 12
-    });
+    }).on('click', this.onMapClick)
     const tiles = L.tileLayer(this.opsmURL, {
       maxZoom: 19,
       attribution: this.attribution
     });
     tiles.addTo(this.map);
-    
+
     if (sites.length === 0) {
       return
     }
@@ -54,7 +58,7 @@ export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
       markers.push(L.marker([latitude, longitude], {
         id: site.id,
         ...this.getMarkerOptions()
-      } as L.MarkerOptions).bindTooltip(site.name,{permanent: true})
+      } as L.MarkerOptions).bindTooltip(site.name, { permanent: true })
       );
     }
     const group = L.featureGroup(markers)
@@ -65,7 +69,15 @@ export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onMarkerClick = (event: L.LeafletMouseEvent): void => {
     const targetMarker = event.sourceTarget as L.Marker
-    // console.log(targetMarker.options['id'])
+    this.selectedId = targetMarker.options['id']
+    this.siteService.getSites().pipe(take(1)).subscribe(sites => {
+      this.selectedSite = sites.find(site => site.id === this.selectedId)
+    })
+  }
+
+  onMapClick = (): void => {
+    this.selectedId = undefined
+    this.selectedSite = undefined
   }
 
   private getMarkerOptions(): L.MarkerOptions {

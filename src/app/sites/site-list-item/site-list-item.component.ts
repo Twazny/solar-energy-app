@@ -20,7 +20,7 @@ export class SiteListItemComponent implements OnInit {
   }
 
   onClick(): void {
-    this.router.navigate([this.site.id], { relativeTo: this.activatedRoute })
+    this.router.navigate([this.site.id], { relativeTo: this.activatedRoute, queryParamsHandling: 'preserve' })
   }
 
 }
