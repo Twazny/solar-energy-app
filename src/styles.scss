@@ -3,8 +3,8 @@
 @import "~leaflet/dist/leaflet.css";
 
 :root {
-  --primary-color: rgb(204, 79, 106);
-  --secondary-color: orangered;
+  --primary-color: rgb(230, 41, 41);
+  --secondary-color: rgb(255, 136, 0);
   --border-color: #dadada;
   --text-dark-color: rgb(59, 59, 59);
   --button-shadow: 0 4px 2px -2px lightgray;
@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  height: 100vh;
+  height: 100%;
   height: -webkit-fill-available;
 
   box-sizing: border-box;

@@ -1,26 +1,24 @@
-<div [@slideIn] style="background-color: white; position: absolute; bottom: 0; z-index: 500; width: 100%; height: 35%">
-    
-    <span style="margin: 0.5rem 0.5rem 0 0.5rem; font-weight: bold; display: inline-block;">{{site.name}}</span>
-    <div class="container">
-        <div class="img-container">
-            <img  [src]="site.photo || 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'" alt="">
-        </div>
-        <div class="data-container">
-            <span>{{site.address}}</span>
-            <br>
-            <span style="color:gray; font-size: 0.9em;">
-                {{site.location.latitude | cardinalDir: 'lat'}}
-                <br>
-                {{site.location.longitude | cardinalDir: 'lng'}}
-            </span>    
-        </div>
+<span class="site-title">{{site.name}}</span>
+<div class="container">
+    <div class="img-container">
+        <img  [src]="site.photo || 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'" alt="">
     </div>
-    <app-icon-button
-        (click)="onShowDetailsClick()"
-        style="position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);" 
-        [size]="'4rem'" 
-        [colorScheme]="'secondary'" 
-        [icon]="'arrow_right'">
-    </app-icon-button>
+    <div class="data-container">
+        <span>{{site.address}}</span>
+        <br>
+        <span style="color:gray; font-size: 0.9em;">
+            {{site.location.latitude | cardinalDir: 'lat'}}
+            <br>
+            {{site.location.longitude | cardinalDir: 'lng'}}
+        </span>    
+    </div>
 </div>
+<app-icon-button
+    (click)="onShowDetailsClick()"
+    style="position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);" 
+    [size]="'4rem'" 
+    [colorScheme]="'secondary'" 
+    [icon]="'arrow_right'">
+</app-icon-button>
+
 
