@@ -1,3 +1,8 @@
+:host {
+  z-index: 1000;
+  position: fixed;
+}
+
 .overlay {
   display: flex;
   flex-direction: column;

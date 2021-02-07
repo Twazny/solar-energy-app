@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Site, SitesService } from '../sites.service';
 import { DialogService } from '../../dialog/dialog.service'
+import { WeatherService, WeatherResponse } from '../../weather.service'
 import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
 import { DialogRef } from '../../dialog/dialog-ref';
 
@@ -28,6 +29,7 @@ export class SiteDetailsComponent implements OnInit {
   site: Site
   id: string
   dialogReference: DialogRef
+  weatherData: WeatherResponse
 
   opened = false
 
@@ -35,7 +37,8 @@ export class SiteDetailsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private sitesService: SitesService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private weatherService: WeatherService
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +48,12 @@ export class SiteDetailsComponent implements OnInit {
       map(sites => {
         return sites.find(site => site.id === this.id)
       })
-    ).subscribe((site: Site) => this.site = site)
+    ).subscribe((site: Site) => {
+      this.site = site
+      this.weatherService.fetchWeatherForSite(this.site).subscribe(data => {
+        this.weatherData = data
+      })
+    })
   }
 
   onEdit(): void {

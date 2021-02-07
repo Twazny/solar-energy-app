@@ -3,11 +3,12 @@
 @import "~leaflet/dist/leaflet.css";
 
 :root {
-  --primary-color: rgb(230, 41, 41);
-  --secondary-color: rgb(255, 136, 0);
+  --primary-color: #D01013;
+  --secondary-color: #FFCF00;
   --border-color: #dadada;
   --text-dark-color: rgb(59, 59, 59);
   --button-shadow: 0 4px 2px -2px lightgray;
+  --border-radius: 5px;
 }
 
 html {

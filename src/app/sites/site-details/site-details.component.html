@@ -1,42 +1,79 @@
 <app-site-edit-header></app-site-edit-header>
-<div style="width: 100%;">
+<div style="width: 100%;height: 92%">
     <div class="img-container">
         <img [src]="site.photo || 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'" alt="">
         <span class="site-name">{{site.name}}</span>
     </div>
-    <div style="padding: 1em; position: relative;">
+    <div style="position: relative; height: calc(100% - 200px);">
         <div (click)="opened = !opened" class="settings-button">
             <span class="material-icons option-button-icon">settings</span>
         </div>
-        <div [@settigs] *ngIf="opened" class="options">
-            <app-icon-button 
-                (click)="onEdit()"
-                style="position: absolute; top: 20%; transform: translateY(-50%);"
-                [colorScheme]="'secondary'"
-                [title]="'Edit'"
-                [icon]="'edit'">
-            </app-icon-button>
-            <app-icon-button 
-                (click)="onRemove()"
-                style="position: absolute; top: 50%; transform: translateY(-50%);"
-                [colorScheme]="'secondary'"
-                [title]="'Remove'" 
-                [icon]="'delete'">
-            </app-icon-button>
-            <app-icon-button 
-                style="position: absolute; top: 80%; transform: translateY(-50%);"
-                [colorScheme]="'secondary'"
-                [title]="'Share'" 
-                [icon]="'share'">
-            </app-icon-button>
+        <div *ngIf="opened" style="z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 70%, transparent 100%); width: 100%; height: 100%; position: absolute;">
+            <div [@settigs] *ngIf="opened" class="options">
+                <app-icon-button 
+                    (click)="onEdit()"
+                    style="position: absolute; top: 20%; transform: translateY(-50%);"
+                    [colorScheme]="'secondary'"
+                    [title]="'Edit'"
+                    [icon]="'edit'">
+                </app-icon-button>
+                <app-icon-button 
+                    (click)="onRemove()"
+                    style="position: absolute; top: 50%; transform: translateY(-50%);"
+                    [colorScheme]="'secondary'"
+                    [title]="'Remove'" 
+                    [icon]="'delete'">
+                </app-icon-button>
+                <app-icon-button 
+                    style="position: absolute; top: 80%; transform: translateY(-50%);"
+                    [colorScheme]="'secondary'"
+                    [title]="'Share'" 
+                    [icon]="'share'">
+                </app-icon-button>
+            </div>
+        </div>
+        
+        <div style="padding: 1rem;" class="main-content">
+            <span>{{site.address}}</span>
+            <br>
+            <span style="color:gray; font-size: 0.9em;">
+                {{site.location.latitude | cardinalDir: 'lat'}} 
+                {{site.location.longitude | cardinalDir: 'lng'}}
+            </span>
+            <!-- <hr> -->
+            <div *ngIf="weatherData" class="weather-container">
+                <div>
+                    <div class="weather-field">
+                        <!-- <img src="assets/sun.svg" alt="Cloud coverage picture" style="height: 3rem; width: auto;"> -->
+                        <span style="font-size: 2.5rem;" class="material-icons">cloud</span>
+                        <span>{{weatherData.cloud_cover.value}} %</span>
+                    </div>
+    
+                    <br>
+                    <div class="weather-field">
+                        <!-- <img src="assets/thermometer.svg" alt="Cloud coverage picture" style="height: 3rem; width: auto;"> -->
+                        <span style="font-size: 2.5rem;" class="material-icons">thermostat</span>
+                        <span>{{weatherData.temp.value}} °C</span>
+                    </div>
+                </div>
+                <!-- <div>
+                    <div class="weather-field">
+                        <img src="assets/sunrise.svg" alt="Sunrise picture" style="height: 3rem; width: auto;">
+                        <span>{{weatherData.sunrise.value | date:"HH:mm"}}</span>
+                    </div>
+                    <br>
+                    <div class="weather-field">
+                        <img src="assets/sunset.svg" alt="Sunset picture" style="height: 3rem; width: auto;">
+                        <span>{{weatherData.sunset.value | date:"HH:mm"}}</span>
+                    </div>
+                </div> -->
+                <app-radial-index [value]="86" [title]="'ROI'"></app-radial-index>
+    
+            </div>
         </div>
 
-        <span>{{site.address}}</span>
-        <br>
-        <span style="color:gray; font-size: 0.9em;">
-            {{site.location.latitude | cardinalDir: 'lat'}} 
-            {{site.location.longitude | cardinalDir: 'lng'}}
-        </span>   
-    </div>
 
+        <!-- <hr> -->
+    </div>
+    <div style='font-size: 0.7rem;'>Weather icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 </div>

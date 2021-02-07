@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpParams } from '@angular/common/http'
-import { environment } from '../environments/environment.prod'
-import { BehaviorSubject, Observable, Subscription } from 'rxjs'
-import { switchMap } from 'rxjs/operators'
-import { LocationService } from './location.service'
+import { environment } from '../environments/environment'
+import { BehaviorSubject, Subscription } from 'rxjs'
+import { Site } from './sites/sites.service'
 
 
 
-export interface CurrentWeatherResponse {
+export interface WeatherResponse {
     lat: string;
     lon: string;
     temp: TempResponse;
     cloud_cover: CloudCoverResponse;
-    observation_time: ObservationTime
+    observation_time: ObservationTime;
+    sunset: SunsetResponse;
+    sunrise: SunriseResponse;
 }
 
 interface TempResponse {
@@ -29,6 +30,14 @@ interface ObservationTime {
     value: string
 }
 
+interface SunsetResponse {
+    value: string
+}
+
+interface SunriseResponse {
+    value: string
+}
+
 
 @Injectable({
     providedIn: 'root'
@@ -36,35 +45,27 @@ interface ObservationTime {
 export class WeatherService {
     private readonly url = 'https://api.climacell.co/v3/weather/realtime'
     locationSubs: Subscription
-    weather = new BehaviorSubject<CurrentWeatherResponse>(null)
+    weather = new BehaviorSubject<WeatherResponse>(null)
 
     constructor(
-        private locationService: LocationService,
         private http: HttpClient
     ) { }
 
-    fetchCurrentWeather() {
-        return this.locationService.getCurrentLocation().then(obs => {
-            return obs.pipe(
-                switchMap(loc => {
-                    console.log(loc)
-                    return this.http.get<CurrentWeatherResponse>(
-                        this.url,
-                        {
-                            params: new HttpParams({
-                                fromObject: {
-                                    apikey: environment.climacellAPIKey,
-                                    lat: loc.coords.latitude.toString(),
-                                    lon: loc.coords.longitude.toString(),
-                                    unit_system: 'si',
-                                    fields: 'temp'
-                                }
-                            })
-                        }
-                    )
+    fetchWeatherForSite(site: Site) {
+        return this.http.get<WeatherResponse>(
+            this.url,
+            {
+                params: new HttpParams({
+                    fromObject: {
+                        apikey: environment.climacellAPIKey,
+                        lat: site.location.latitude.toString(),
+                        lon: site.location.longitude.toString(),
+                        unit_system: 'si',
+                        fields: 'temp,cloud_cover,sunset,sunrise,visibility',
+                    }
                 })
-            )
-        })
+            }
+        )
     }
 
 }

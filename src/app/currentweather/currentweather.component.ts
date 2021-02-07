@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { WeatherService, CurrentWeatherResponse } from '../weather.service'
+import { WeatherService, WeatherResponse } from '../weather.service'
 
 @Component({
   selector: 'app-currentweather',
@@ -10,7 +10,7 @@ import { WeatherService, CurrentWeatherResponse } from '../weather.service'
 export class CurrentweatherComponent implements OnInit {
 
   weatherSubs: Subscription
-  weather: CurrentWeatherResponse
+  weather: WeatherResponse
   // wjson: string
 
   constructor(
