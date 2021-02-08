@@ -52,6 +52,7 @@ export class WeatherService {
     ) { }
 
     fetchWeatherForSite(site: Site) {
+        console.log(environment.climacellAPIKey)
         return this.http.get<WeatherResponse>(
             this.url,
             {
