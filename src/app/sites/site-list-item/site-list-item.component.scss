@@ -19,7 +19,7 @@
   height: 100%;
   width: 30%;
   overflow: hidden;
-  border-radius: 1em;
+  border-radius: var(--border-radius);
   max-width: 150px;
   margin-right: 0.5rem;
   & img {

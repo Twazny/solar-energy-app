@@ -60,7 +60,7 @@ import { RouterOutlet } from '@angular/router';
   ]
 })
 export class AppComponent {
-  title = 'weather-app';
+  title = 'Solar DER App';
   prepareRoute(outlet: RouterOutlet): string {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }

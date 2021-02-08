@@ -14,6 +14,8 @@ export interface WeatherResponse {
     observation_time: ObservationTime;
     sunset: SunsetResponse;
     sunrise: SunriseResponse;
+    visibility: VisibilityResponse;
+    surface_shortwave_radiation: SurfaceShortwaveRadiationResponse;
 }
 
 interface TempResponse {
@@ -38,6 +40,14 @@ interface SunriseResponse {
     value: string
 }
 
+interface VisibilityResponse {
+    value: string
+}
+
+interface SurfaceShortwaveRadiationResponse {
+    value: number;
+    units: string;
+}
 
 @Injectable({
     providedIn: 'root'
@@ -52,7 +62,6 @@ export class WeatherService {
     ) { }
 
     fetchWeatherForSite(site: Site) {
-        console.log(environment.climacellAPIKey)
         return this.http.get<WeatherResponse>(
             this.url,
             {
@@ -62,7 +71,7 @@ export class WeatherService {
                         lat: site.location.latitude.toString(),
                         lon: site.location.longitude.toString(),
                         unit_system: 'si',
-                        fields: 'temp,cloud_cover,sunset,sunrise,visibility',
+                        fields: 'temp,cloud_cover,sunset,sunrise,visibility,surface_shortwave_radiation',
                     }
                 })
             }

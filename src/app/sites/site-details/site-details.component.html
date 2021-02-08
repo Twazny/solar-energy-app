@@ -40,40 +40,31 @@
                 {{site.location.latitude | cardinalDir: 'lat'}} 
                 {{site.location.longitude | cardinalDir: 'lng'}}
             </span>
-            <!-- <hr> -->
+            <br>
+            <h4 class="section-title">Weather</h4>
             <div *ngIf="weatherData" class="weather-container">
-                <div>
                     <div class="weather-field">
-                        <!-- <img src="assets/sun.svg" alt="Cloud coverage picture" style="height: 3rem; width: auto;"> -->
                         <span style="font-size: 2.5rem;" class="material-icons">cloud</span>
                         <span>{{weatherData.cloud_cover.value}} %</span>
                     </div>
-    
-                    <br>
                     <div class="weather-field">
-                        <!-- <img src="assets/thermometer.svg" alt="Cloud coverage picture" style="height: 3rem; width: auto;"> -->
+                        <span style="font-size: 2.5rem;" class="material-icons">waves</span>
+                        <span>{{weatherData.surface_shortwave_radiation.value | number: '1.2-2'}} W/m<sup>2</sup></span>
+                    </div>
+                    <div class="weather-field">
+                        <span style="font-size: 2.5rem;" class="material-icons">visibility</span>
+                        <span>{{weatherData.visibility.value}} km</span>
+                    </div>
+                    <div class="weather-field">
                         <span style="font-size: 2.5rem;" class="material-icons">thermostat</span>
                         <span>{{weatherData.temp.value}} °C</span>
-                    </div>
-                </div>
-                <!-- <div>
-                    <div class="weather-field">
-                        <img src="assets/sunrise.svg" alt="Sunrise picture" style="height: 3rem; width: auto;">
-                        <span>{{weatherData.sunrise.value | date:"HH:mm"}}</span>
-                    </div>
-                    <br>
-                    <div class="weather-field">
-                        <img src="assets/sunset.svg" alt="Sunset picture" style="height: 3rem; width: auto;">
-                        <span>{{weatherData.sunset.value | date:"HH:mm"}}</span>
-                    </div>
-                </div> -->
-                <app-radial-index [value]="86" [title]="'ROI'"></app-radial-index>
-    
+                    </div>   
+            </div>
+            <h4 class="section-title">KPIs</h4>
+            <div class="kpis-container">
+                <app-radial-index [value]="24" [title]="'ROI'"></app-radial-index>
+                <app-radial-index [value]="86" [title]="'PR'"></app-radial-index>
             </div>
         </div>
-
-
-        <!-- <hr> -->
     </div>
-    <div style='font-size: 0.7rem;'>Weather icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 </div>

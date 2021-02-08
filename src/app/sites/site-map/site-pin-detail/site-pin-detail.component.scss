@@ -5,7 +5,7 @@
   width: 100%;
   z-index: 500;
   bottom: 0;
-  background-color: white
+  background-color: white;
 }
 
 .container {
@@ -18,8 +18,8 @@
 }
 
 .site-title {
-  margin: 0.5rem 0.5rem 0 0.5rem; 
-  font-weight: bold; 
+  margin: 0.5rem 0.5rem 0 0.5rem;
+  font-weight: bold;
   display: inline-block;
 }
 
@@ -37,7 +37,7 @@
   height: 100%;
   width: 30%;
   overflow: hidden;
-  border-radius: 1em;
+  border-radius: var(--border-radius);
   max-width: 150px;
   margin-right: 0.5rem;
   & img {
