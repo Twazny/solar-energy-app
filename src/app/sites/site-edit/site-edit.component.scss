@@ -5,9 +5,13 @@
 
 .form-container {
   padding: 5%;
-  height: 92%;
+  height: calc(100% - 51px);
   position: relative;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
   & input {
     margin-bottom: 1em;
   }
@@ -122,14 +126,10 @@ button {
 }
 
 button[type="submit"] {
-  position: absolute;
-  right: 2vw;
-  bottom: 2vw;
-
-  width: 96vw;
+  width: 100%;
   font-size: 1em;
   padding: 1em;
-
+  margin-top: 1rem;
   &:disabled {
     opacity: 0.5;
   }

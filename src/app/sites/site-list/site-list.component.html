@@ -1,7 +1,18 @@
 <app-site-list-header (onFilter)="onFilter($event)"></app-site-list-header>
-<div *ngIf="!mapMode" style="overflow-y: scroll; height: 92%; display: flex; flex-direction: column;">
-    <app-site-list-item [site]="site" *ngFor="let site of (sites | filterSites: filter)"></app-site-list-item>
+<div *ngIf="!mapMode" class="site-list-container">
+    <app-site-list-item 
+        *ngFor="let site of (sites | filterSites: filter)"
+        [site]="site" >
+    </app-site-list-item>
 </div>
 <app-site-map *ngIf="mapMode"></app-site-map>
-<app-icon-button (click)="onModeToggle()" [icon]="mapMode ? 'list' : 'map'" style="z-index: 500; position: absolute; left: 1rem; bottom: 1rem;"></app-icon-button>
-<app-icon-button (click)="onAdd()" [icon]="'add'" style="z-index: 500; position: absolute; right: 1rem; bottom: 1rem;"></app-icon-button>
+<app-icon-button 
+    (click)="onModeToggle()" 
+    [icon]="mapMode ? 'list' : 'map'" 
+    class="toggle-map-button">
+</app-icon-button>
+<app-icon-button 
+    (click)="onAdd()" 
+    [icon]="'add'" 
+    class="add-button">
+</app-icon-button>
