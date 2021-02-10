@@ -49,3 +49,10 @@
     transform: translate(-50%, -50%);
   }
 }
+
+.show-details-button {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}

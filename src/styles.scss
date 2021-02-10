@@ -7,8 +7,10 @@
   --secondary-color: #ffcf00;
   --border-color: #dadada;
   --text-dark-color: rgb(59, 59, 59);
-  --button-shadow: 0 4px 2px -2px lightgray;
+  --button-shadow: 0 4px 4px -1px gray;
   --border-radius: 5px;
+  --header-height: 50px;
+  --content-height: calc(100% - 51px);
 }
 
 html {

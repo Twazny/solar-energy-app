@@ -11,7 +11,12 @@ export enum ColorScheme {
 })
 export class IconButtonComponent implements OnInit {
   @Input() icon: string
-  @Input() colorScheme: 'primary' | 'secondary' | 'white' | 'transparent' = 'primary'
+  @Input() colorScheme:
+    'primary' |
+    'secondary' |
+    'white' |
+    'transparent' |
+    'transparent-dark' = 'primary'
   @Input() title: string
 
   @Input()
@@ -27,6 +32,7 @@ export class IconButtonComponent implements OnInit {
       'button-primary': this.colorScheme === 'primary',
       'button-secondary': this.colorScheme === 'secondary',
       'button-transparent': this.colorScheme === 'transparent',
+      'button-transparent-dark': this.colorScheme === 'transparent-dark',
     }
   }
 

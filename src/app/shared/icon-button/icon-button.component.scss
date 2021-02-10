@@ -46,6 +46,14 @@ button {
     }
   }
 
+  &.button-transparent-dark {
+    background-color: transparent;
+    box-shadow: none;
+    & .icon-span {
+      color: var(--text-dark-color);
+    }
+  }
+
   &::after {
     content: "";
     position: absolute;

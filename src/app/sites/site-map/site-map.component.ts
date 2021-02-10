@@ -58,8 +58,7 @@ export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
       const { latitude, longitude } = site.location
       markers.push(L.marker([latitude, longitude], {
         id: site.id,
-        // ...this.getMarkerOptions()
-        icon: this.getMarkerIcon('red')
+        icon: this.getMarkerIcon('var(--primary-color)')
       } as L.MarkerOptions).bindTooltip(site.name, { permanent: true })
       );
     }
@@ -76,7 +75,7 @@ export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.selectedMarker = event.sourceTarget as L.Marker
     this.selectedMarker.setIcon(this.getMarkerIcon('var(--secondary-color)'))
-    
+
     this.map.flyTo(this.selectedMarker.getLatLng())
 
     this.selectedId = this.selectedMarker.options['id']
@@ -96,7 +95,7 @@ export class SiteMapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private getMarkerIcon(color: string): L.DivIcon {
     return new L.DivIcon({
-      className: '', iconSize: [40, 40],iconAnchor: [20, 40],
+      className: '', iconSize: [40, 40], iconAnchor: [20, 40],
       html: `<span style="color:${color}; font-size: 2.5rem;" class="material-icons">place</span>`
     })
   }

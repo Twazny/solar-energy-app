@@ -1,14 +1,17 @@
 <app-site-edit-header></app-site-edit-header>
-<div style="width: 100%;height: 92%">
+<div class="details-container">
     <div class="img-container">
         <img [src]="site.photo || 'https://www.oferty-biznesowe.pl/media/thumbnail/company/10294039.jpg'" alt="">
         <span class="site-name">{{site.name}}</span>
     </div>
     <div style="position: relative; height: calc(100% - 200px);">
-        <div (click)="opened = !opened" class="settings-button">
-            <span class="material-icons option-button-icon">settings</span>
-        </div>
-        <div *ngIf="opened" style="z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 70%, transparent 100%); width: 100%; height: 100%; position: absolute;">
+        <app-icon-button 
+            (click)="opened = !opened"
+            style="position: absolute; top: 0;right:1rem; z-index: 2; transform: translateY(-50%);"
+            [colorScheme]="'white'"
+            [icon]="'settings'">
+        </app-icon-button>
+        <div *ngIf="opened" class="options-modal">
             <div [@settigs] *ngIf="opened" class="options">
                 <app-icon-button 
                     (click)="onEdit()"
@@ -41,8 +44,15 @@
                 {{site.location.longitude | cardinalDir: 'lng'}}
             </span>
             <br>
-            <h4 class="section-title">Weather</h4>
-            <div *ngIf="weatherData" class="weather-container">
+            
+            <app-accordion [title]="'KPIs'">
+                <div class="kpis-container">
+                    <app-radial-index [value]="24" [title]="'ROI'"></app-radial-index>
+                    <app-radial-index [value]="86" [title]="'PR'"></app-radial-index>
+                </div>
+            </app-accordion>
+            <app-accordion [title]="'Weather'">
+                <div *ngIf="weatherData" class="weather-container">
                     <div class="weather-field">
                         <span style="font-size: 2.5rem;" class="material-icons">cloud</span>
                         <span>{{weatherData.cloud_cover.value}} %</span>
@@ -59,12 +69,9 @@
                         <span style="font-size: 2.5rem;" class="material-icons">thermostat</span>
                         <span>{{weatherData.temp.value}} °C</span>
                     </div>   
-            </div>
-            <h4 class="section-title">KPIs</h4>
-            <div class="kpis-container">
-                <app-radial-index [value]="24" [title]="'ROI'"></app-radial-index>
-                <app-radial-index [value]="86" [title]="'PR'"></app-radial-index>
-            </div>
+                </div>
+            </app-accordion>
+
         </div>
     </div>
 </div>
