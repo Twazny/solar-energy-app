@@ -52,6 +52,7 @@
                 </div>
             </app-accordion>
             <app-accordion [title]="'Weather'">
+                <app-loader *ngIf="!weatherData"></app-loader>
                 <div *ngIf="weatherData" class="weather-container">
                     <div class="weather-field">
                         <span style="font-size: 2.5rem;" class="material-icons">cloud</span>
