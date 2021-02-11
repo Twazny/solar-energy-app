@@ -11,7 +11,7 @@
             [colorScheme]="'white'"
             [icon]="'settings'">
         </app-icon-button>
-        <div *ngIf="opened" class="options-modal">
+        <div *ngIf="opened" class="options-modal"></div>
             <div [@settigs] *ngIf="opened" class="options">
                 <app-icon-button 
                     (click)="onEdit()"
@@ -34,7 +34,7 @@
                     [icon]="'share'">
                 </app-icon-button>
             </div>
-        </div>
+        
         
         <div style="padding: 1rem;" class="main-content">
             <span>{{site.address}}</span>
