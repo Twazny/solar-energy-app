@@ -1,26 +1,42 @@
 <app-site-edit-header></app-site-edit-header>
-<form class="form-container" [formGroup]="form" (ngSubmit)="onSubmit()">
+<app-site-map-selection
+    (coordinatesSelected)="onCoordinatesSelected($event)"
+    [coordinates]="{
+        lat: form.value.location.latitude,
+        lng: form.value.location.longitude
+    }"
+    *ngIf="selectOnMap">
+</app-site-map-selection>
+<form *ngIf="!selectOnMap" class="form-container" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div>
         <!-- <h4>Create new site</h4> -->
-        <label for="name">Name</label>
-        <br>
-        <input type="text" name="name" id="name" formControlName="name">
-        <br>
-        <label for="address">Address</label>
-        <br>
-        <input type="text" name="address" id="address" formControlName="address">
-        <br>
-        <label>Coordinates</label>
-        <div class="coordinates-container" formGroupName="location">
-            <label for="latitude">N/S</label>
-            <input type="number"  name="latitude" id="latitude" formControlName="latitude" step="0.000001">
-            <label for="longitude">W/E</label>
-            <input type="number" name="longitude" id="longitude" formControlName="longitude" step="0.000001">
+        <div class="field-group">
+            <label for="name">Name</label>
+            <br>
+            <input class="form-input" type="text" name="name" id="name" formControlName="name">
         </div>
-        <button type="button" (click)="onUseMyLocation()" style="display: flex; align-items: center;justify-content: space-evenly;" class="outline-button">
-            <span class="material-icons" style="margin-right: 0.3em;">my_location</span>Use my current location
-        </button>
-        <br>
+        <div class="field-group">
+            <label for="address">Address</label>
+            <br>
+            <input class="form-input" type="text" name="address" id="address" formControlName="address">
+        </div>
+        <div class="field-group">
+            <label>Coordinates</label>
+            <div class="coordinates-container" formGroupName="location">
+                <label for="latitude">N/S</label>
+                <input type="number"  name="latitude" id="latitude" formControlName="latitude" step="0.000001">
+                <label for="longitude">W/E</label>
+                <input type="number" name="longitude" id="longitude" formControlName="longitude" step="0.000001">
+                <app-icon-button
+                    (click)="onUseMyLocation()"
+                    [icon]="'my_location'"
+                    [colorScheme]="'secondary'"
+                    [size]="'2.2rem'"
+                ></app-icon-button>
+            </div>
+            <!-- or -->
+            <app-button (click)="selectOnMap=true" [light]="true" [text]="'Select on map'"></app-button>
+        </div>
         <label for="photo">Photo</label>
         <br>
         <input #fileInput type="file" name="photo" id="input" (change)="onFileUpload($event)">
@@ -43,10 +59,10 @@
                 [size]="'2.5rem'"
                 style="position: absolute; top: 3.5rem; right: 0.5rem;"
             ></app-icon-button>
-            <!-- <button (click)="onPhotoRemove($event)" *ngIf="photoUrl"><span class="material-icons">delete_outline</span></button> -->
+
         </div>
     </div>
-    <button type="submit" [disabled]="!form.valid">Save</button>    
+    <app-button [submit]="true" [disabled]="!form.valid" [text]="'Save'"></app-button>
 </form>
 
 

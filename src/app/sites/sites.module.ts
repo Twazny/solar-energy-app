@@ -16,6 +16,7 @@ import { SiteEditHeaderComponent } from './site-edit-header/site-edit-header.com
 import { SiteDetailsComponent } from './site-details/site-details.component';
 import { SiteMapComponent } from './site-map/site-map.component';
 import { SitePinDetailComponent } from './site-map/site-pin-detail/site-pin-detail.component';
+import { SiteMapSelectionComponent } from './site-map-selection/site-map-selection.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SitePinDetailComponent } from './site-map/site-pin-detail/site-pin-deta
     FilterSitesPipe,
     SiteMapComponent,
     SitePinDetailComponent,
+    SiteMapSelectionComponent,
   ],
   imports: [
     CommonModule,

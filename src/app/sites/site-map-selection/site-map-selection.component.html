@@ -1,0 +1,14 @@
+<div class="map-container">
+    <div id="map-selection"></div>
+    <div class="selection-marker">
+        <span class="material-icons">place</span>
+    </div>
+    <div class="footer">
+        <div class="coordinates-container">
+            <span>{{center.lat | cardinalDir:'lat'}}</span>
+            <br>
+            <span>{{center.lng | cardinalDir:'lng'}}</span>
+        </div>
+        <app-button (click)="onCoordinatesSelect()" [text]="'Select'"></app-button>
+    </div>
+</div>

@@ -11,11 +11,21 @@
   --border-radius: 5px;
   --header-height: 50px;
   --content-height: calc(100% - 51px);
+  --font-family: "Open Sans", sans-serif;
 }
 
 html {
   height: 100%;
   // height: -webkit-fill-available;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
@@ -27,7 +37,7 @@ body {
   background: white;
   margin: 0;
   // font-family: 'Space Mono', monospace;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-family);
   color: var(--text-dark-color);
   overflow: hidden;
 }

@@ -1,1 +1,6 @@
-<button [ngClass]="{'button-light': light}">{{text | uppercase}}</button>
+<button 
+    [disabled]="disabled"
+    [type]="submit? 'submit':'button'" 
+    [ngClass]="{'button-light': light}">
+    {{text }}
+</button>

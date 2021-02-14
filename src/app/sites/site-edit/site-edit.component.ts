@@ -20,6 +20,8 @@ export class SiteEditComponent implements OnInit {
   id: string
   site: Site
 
+  selectOnMap = false
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -132,5 +134,15 @@ export class SiteEditComponent implements OnInit {
     }).catch(error => {
       console.log('componentError', error)
     })
+  }
+
+  onCoordinatesSelected(event: L.LatLng): void {
+    this.form.patchValue({
+      location: {
+        latitude: event.lat.toFixed(6),
+        longitude: event.lng.toFixed(6)
+      }
+    })
+    this.selectOnMap = false
   }
 }

@@ -1,0 +1,39 @@
+.map-container {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: var(--content-height);
+}
+
+#map-selection {
+  height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 500;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.selection-marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 500;
+
+  & .material-icons {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+  }
+}
+
+.coordinates-container {
+  display: inline-block;
+}
