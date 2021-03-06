@@ -1,0 +1,52 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5em;
+    height: var(--header-height);
+    box-sizing: border-box;
+  }
+  
+  .back-button {
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 2rem;
+    border-radius: 1.25rem;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    margin-right: 0.5rem;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    color: white;
+    position: relative;
+    padding: 0;
+  
+    & span {
+      line-height: 2.5rem;
+      font-size: 2rem;
+    }
+  
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 50%;
+      left: 50%;
+      transform-style: flat;
+      transform: translate3d(-50%, -50%, 0);
+      background: rgba(white, 0.2);
+      border-radius: 100%;
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+    &:active {
+      &::after {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+  

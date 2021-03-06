@@ -10,11 +10,14 @@
 }
 
 input {
+  border-radius: 0;
   border-width: 0 0 1px 0;
   border-color: white;
   background-color: transparent;
   outline: none;
   color: white;
+  font-family: var(--font-family);
+  box-shadow: none;
 }
 
 ::placeholder {

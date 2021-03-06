@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SiteEditHeaderComponent } from './site-edit-header.component';
+import { BackHeaderComponent } from './back-header.component';
 
-describe('SiteEditHeaderComponent', () => {
-  let component: SiteEditHeaderComponent;
-  let fixture: ComponentFixture<SiteEditHeaderComponent>;
+describe('BackHeaderComponent', () => {
+  let component: BackHeaderComponent;
+  let fixture: ComponentFixture<BackHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SiteEditHeaderComponent ]
+      declarations: [ BackHeaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SiteEditHeaderComponent);
+    fixture = TestBed.createComponent(BackHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

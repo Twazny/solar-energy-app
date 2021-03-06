@@ -2,11 +2,14 @@
     <div>SOLARenergy</div>
     <div>
         <input type="text" name="" id="" placeholder="Search" spellcheck="false" (change)="onSearch($event)" [value]="filter">
-        <i
+        <app-icon-button
             *ngIf="filter"
-            class="material-icons" 
+            icon = "clear"
+            [colorScheme]="'transparent'"
             style="position: absolute; right: 5px;" 
             (click)="onClick()"
-        >clear</i>
+            size="2rem"
+        >
+        </app-icon-button>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<app-site-edit-header></app-site-edit-header>
+<app-back-header [title]="id ? 'Back to site details' : 'Back to site list'"></app-back-header>
 <app-site-map-selection
     (coordinatesSelected)="onCoordinatesSelected($event)"
     [coordinates]="{
