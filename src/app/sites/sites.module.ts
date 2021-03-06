@@ -12,7 +12,6 @@ import { SiteListItemComponent } from './site-list-item/site-list-item.component
 import { SiteListHeaderComponent } from './site-list-header/site-list-header.component';
 import { FilterSitesPipe } from './filter-sites.pipe';
 import { SiteEditComponent } from './site-edit/site-edit.component';
-import { SiteEditHeaderComponent } from './site-edit-header/site-edit-header.component';
 import { SiteDetailsComponent } from './site-details/site-details.component';
 import { SiteMapComponent } from './site-map/site-map.component';
 import { SitePinDetailComponent } from './site-map/site-pin-detail/site-pin-detail.component';
@@ -24,7 +23,6 @@ import { SiteMapSelectionComponent } from './site-map-selection/site-map-selecti
     SiteListItemComponent,
     SiteListHeaderComponent,
     SiteEditComponent,
-    SiteEditHeaderComponent,
     SiteDetailsComponent,
     FilterSitesPipe,
     SiteMapComponent,

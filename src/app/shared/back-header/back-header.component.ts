@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-site-edit-header',
-  templateUrl: './site-edit-header.component.html',
-  styleUrls: ['./site-edit-header.component.scss']
+  selector: 'app-back-header',
+  templateUrl: './back-header.component.html',
+  styleUrls: ['./back-header.component.scss']
 })
-export class SiteEditHeaderComponent implements OnInit {
+export class BackHeaderComponent implements OnInit {
+  @Input() title: string;
 
   constructor(
     private router: Router,
